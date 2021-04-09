@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato, sans-serif';
+}
+
+
+html {
+    width:100%;
+    height:100%;
+}
+body {
+    width:100%;
+    height:100%;
+}
+#root{
+    width:100%;
+    height:100%;
+}
+.common-pages{
+    width: calc(100% - 40px);
+    height: calc(100% - 15vh);
+}
+.common-margin{
+    margin: 20px;
+}
+.row.common-row-margin{
+    margin-bottom:10px;
+    margin-right:0;
+    margin-left:0;
+}
+.common-center-align-content{
+    display: flex;
+    justify-content: center;
+}
+.common-icons{
+    cursor:pointer;
+}
+.task-table{
+    margin-top:10px;
+}
+.pagination-refresh{
+    position: relative;
+    top: 31px;
+    font-size: 36px;
+}
+.input-radio{
+    margin-left:5px;
+}
+.upload-profile-picture{
+    position: relative;
+    top: 194px;
+    left: -50px;
+    font-size: 26px;
+}
+.login-page{
+    top: 26%;
+    width: 60%;
+    position: relative;
+    left: 34%;
+    height: auto;
+}
+.common-link{
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.profile-picture{
+    width:250px;
+    height:250px;
+    border:1px solid;
+}
