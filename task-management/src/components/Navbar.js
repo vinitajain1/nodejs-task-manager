@@ -9,7 +9,7 @@ import { IconContext } from 'react-icons';
 
 function Navbar(props) {
     const [sidebar, setSideBar] = useState(false);
-
+    const user = JSON.parse(localStorage.getItem("user"));
     const showSidebar = ()=>{
         setSideBar(!sidebar);
     }
@@ -20,7 +20,10 @@ function Navbar(props) {
                 <Link to="#" className='menu-bars'>
                     <FaIcons.FaBars onClick={showSidebar}/>
                 </Link>
-                <button className="btn btn-primary logoutBtn" onClick={props.handleLogout}>Logout</button> 
+                <div className="nav-menu-header">
+                    <div className="nav-menu-user">Welcome {user.name}</div>
+                    <button className="btn btn-primary logoutBtn" onClick={props.handleLogout}>Logout</button> 
+                </div>
             </div> 
             <nav className={sidebar ? 'nav-menu active':'nav-menu'}>
                 <ul className='nav-menu-items' onClick={showSidebar}>

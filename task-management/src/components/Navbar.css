@@ -64,7 +64,13 @@
 span{
     margin-left: 16px;
 }
-.logoutBtn{
-    position: relative;
-    left: 90%;
+.nav-menu-header{
+    position:relative;
+    left:80%;
+    color:white;
+    display:flex;
+}
+.nav-menu-user{
+    line-height:35px;
+    margin-right:10px;  
 }

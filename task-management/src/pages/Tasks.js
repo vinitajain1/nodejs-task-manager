@@ -1,8 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import * as BIIcons from "react-icons/bi";
 import * as MdIcons from "react-icons/md";
+import {formatDate} from "../utilities/DateUtility";
 function Tasks(props) {
     const authToken = localStorage.getItem("authToken");
+    const user = JSON.parse(localStorage.getItem("user"));
     const [tasks, setTasks] = useState([]);
 
     /**
@@ -100,9 +102,9 @@ function Tasks(props) {
                 {tasks.map((task,index)=>{
                     return(<tr>
                         <td>{task['description']}</td>
-                        <td>{task['owner']}</td>
-                        <td>{task['createdAt']}</td>
-                        <td>{task['updatedAt']}</td>
+                        <td>{user.name}</td>
+                        <td>{formatDate(task['createdAt'])}</td>
+                        <td>{formatDate(task['updatedAt'])}</td>
                         <td>{task['completed']?"Yes":"No"}</td>
                         <td>
                             <div className="task-action">
