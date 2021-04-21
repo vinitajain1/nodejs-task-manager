@@ -1,15 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState,useContext} from 'react';
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import {Link} from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
+import UserContext from "../components/UserContext";
 
 
 function Navbar(props) {
     const [sidebar, setSideBar] = useState(false);
-    const user = JSON.parse(localStorage.getItem("user"));
+    const {user}=useContext(UserContext);
     const showSidebar = ()=>{
         setSideBar(!sidebar);
     }

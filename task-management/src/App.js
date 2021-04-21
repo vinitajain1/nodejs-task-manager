@@ -2,11 +2,15 @@ import './App.css';
 import React, { Component,useState } from 'react';
 import TaskManager from "./components/TaskManager";
 import Login from "./pages/Login";
+import UserContext from "./components/UserContext";
 
 
 function App(){
 
-  const [loggedIn,setLoggedIn] = useState(false);
+    const [userData,setUserData] = useState({
+        authToken:localStorage.getItem("authToken"),
+        user:JSON.parse(localStorage.getItem("user")),
+    });
 
   const handleLogin = async function(loginCredentials){
     const response = await fetch('/users/login', {
@@ -59,17 +63,24 @@ function App(){
 
   const emptyLocalStorage = function(){
     localStorage.clear();
-    setLoggedIn(!loggedIn);
+    setUserData({});
   }
 
   const initializeLocalStorage = function(userData){
     localStorage.setItem("authToken",userData.token);
     localStorage.setItem("user",JSON.stringify(userData.user));
-    setLoggedIn(!loggedIn);
+    setUserData({
+      authToken:userData.token,
+      user:userData.user
+      });
   }
 
-  const componentToRender = localStorage.getItem("authToken") && localStorage.getItem("user")
-                            ?<TaskManager handleLogout={handleLogout}/>
+  const componentToRender = userData.authToken && userData.user
+                            ?(
+                              <UserContext.Provider value={userData}>
+                                  <TaskManager handleLogout={handleLogout}/>
+                              </UserContext.Provider>
+                            )
                             :<Login handleLogin={handleLogin} handleSignup={handleSignup}/>
   return(
     <>

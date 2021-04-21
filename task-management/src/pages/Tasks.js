@@ -1,10 +1,10 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useContext} from 'react';
 import * as BIIcons from "react-icons/bi";
 import * as MdIcons from "react-icons/md";
 import {formatDate} from "../utilities/DateUtility";
+import UserContext from "../components/UserContext";
 function Tasks(props) {
-    const authToken = localStorage.getItem("authToken");
-    const user = JSON.parse(localStorage.getItem("user"));
+    const {authToken,user}=useContext(UserContext);
     const [tasks, setTasks] = useState([]);
 
     /**
@@ -77,11 +77,11 @@ function Tasks(props) {
                     <div className="row">
                         <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2"> 
                             <label>Limit:</label>
-                            <input type = "number" name="limit" class="form-control"/>
+                            <input type = "number" name="limit" className="form-control"/>
                         </div>
                         <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2"> 
                             <label>Skip:</label>
-                            <input type = "number" name="skip" class="form-control"/>
+                            <input type = "number" name="skip" className="form-control"/>
                         </div>
                         <BIIcons.BiRefresh className="common-icons pagination-refresh" onClick={fetchTasks}/>
                     </div>
@@ -100,7 +100,7 @@ function Tasks(props) {
                 </thead>
                 <tbody>
                 {tasks.map((task,index)=>{
-                    return(<tr>
+                    return(<tr key={index}>
                         <td>{task['description']}</td>
                         <td>{user.name}</td>
                         <td>{formatDate(task['createdAt'])}</td>

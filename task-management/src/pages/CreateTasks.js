@@ -1,8 +1,9 @@
-import React,{useEffect,useState} from 'react';
-import {useParams} from "react-router-dom"
+import React,{useEffect,useState,useContext} from 'react';
+import {useParams} from "react-router-dom";
+import UserContext from "../components/UserContext";
 
 function CreateTasks(props) {
-    const authToken = localStorage.getItem("authToken");
+    const {authToken}=useContext(UserContext);
     const {taskId} = useParams();
     const [description, setdescription] = useState("");
     const [completed, setcompleted] = useState(false);

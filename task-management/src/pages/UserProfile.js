@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState,useContext} from 'react';
 import * as FCIcons from "react-icons/fc";
+import UserContext from "../components/UserContext";
 
 function UserProfile() {
-    const authToken = localStorage.getItem("authToken");
-    const user = JSON.parse(localStorage.getItem("user"));
+    const {authToken,user}=useContext(UserContext);
     const [name, setName] = useState(user.name);
     const [email, setEmail] = useState(user.email);
     const [age, setAge] = useState(user.age);
