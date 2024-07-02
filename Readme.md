@@ -28,16 +28,6 @@ cd task-manager-app
 ```
 # Backend Setup:
 
-Navigate to the backend directory:
-
-```
-cd backend
-npm install
-npm start
-
-```
-# Steps to run locally
-
 1. Create 'config' folder inside root folder
 2. Create 'dev.env' file inside 'config' folder
 3. Add following details to 'dev.env' file
@@ -46,4 +36,16 @@ npm start
    JWT_SECRET=//JWS secert
    MONGODB_URL=// mongodb url
    ```
+```
+npm install
+npm start
+```
+
 # Frontend Setup:
+Install dependencies.
+
+```
+cd task-management
+npm install
+npm start
+```
